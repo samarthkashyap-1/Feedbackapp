@@ -1,6 +1,11 @@
 import { useForm } from "react-hook-form";
+import AdminDash from "./AdminDash";
+import TeacherDashboard from "./TeacherDashboard";
+import {useNavigate} from "react-router-dom"
+
 
 const Login = () => {
+  const navigate = useNavigate()
 	const {
 		register,
 		handleSubmit,
@@ -8,7 +13,18 @@ const Login = () => {
 	} = useForm();
 
 	const onSubmit = data => {
-		console.log(data);
+		console.log(data)
+    localStorage.setItem("user", JSON.stringify(data));
+    if (data.email == "admin@gmail.com" && data.password == "admin123") {
+      
+      navigate("/admin")
+      }
+      else if (data.email == "teacher@gmail.com" && data.password == "teacher123") {
+        navigate("/teacher")
+        }
+        else {
+          return <Login/>
+          };
 	};
 	return (
     <div className="w-screen h-screen flex justify-center items-center text-gray-600 bg-[#f1efec]">

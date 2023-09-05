@@ -8,6 +8,7 @@ import {
 } from "@material-tailwind/react";
 import { Component } from "react";
 import Form from "./Form";
+import TableFeedback from "./TableFeedback";
 
 
 function Feedback() {
@@ -22,13 +23,13 @@ function Feedback() {
     {
       label: "Excel",
       value: "excel",
-      component: <div>Hello from excel</div>
+      component: <TableFeedback />
     }
   ];
 
   return (
-    <div className="col-span-4 bg-secondary rounded-lg ">
-      <Tabs id="custom-animation" className="" value="form">
+    <div className="col-span-4 bg-secondary rounded-lg p-2">
+      <Tabs id="custom-animation" className="mb-2" value="form">
         <TabsHeader className=" bg-secondary">
           {data.map(({ label, value }) => (
             <Tab className="font-bold" key={value} value={value}>
@@ -36,10 +37,10 @@ function Feedback() {
             </Tab>
           ))}
         </TabsHeader>
-        <hr className="border-white border-4" />
+        
 
         <TabsBody
-          className="flex justify-center items-center mt-16"
+          className="flex justify-center items-center"
           animate={{
             initial: { y: 250 },
             mount: { y: 0 },
@@ -47,7 +48,7 @@ function Feedback() {
           }}
         >
           {data.map(({ value, component }) => (
-            <TabPanel className="p-0 mt-2 rounded-lg overflow-hidden" key={value} value={value}>
+            <TabPanel className="p-0 rounded-lg " key={value} value={value}>
               {component}
             </TabPanel>
           ))}

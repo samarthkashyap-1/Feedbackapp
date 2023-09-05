@@ -1,6 +1,10 @@
 import React from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({admincheck}) => {
+  console.log(admincheck +" from login")
+
+  const Navigate = useNavigate()
   return (
     <div className="col-span-1 p-2 bg-secondary rounded-lg drop-shadow-md">
       <div className=" bg-sec_dark   rounded-lg p-4">
@@ -17,21 +21,28 @@ const Sidebar = () => {
         </div>
       </div>
       <div className="p-4 mt-2 flex flex-col h-[70%] gap-3 font-bold">
-        <div className=" cursor-pointer">
-          <p className="text-lg  hover:bg-white hover:text-sec_dark transition-colors duration-300 py-2 rounded-lg px-1">
-            Teachers
-          </p>
-        </div>
-        <hr className="border-black" />
-
-        <div className="cursor-pointer">
-          <p className="text-lg  hover:bg-white hover:text-sec_dark transition-colors duration-300 py-2 rounded-lg px-1">
-            Feedback
-          </p>
-        </div>
-        <hr className=" border-black" />
+        {admincheck ? (
+          <>
+            <div className=" cursor-pointer">
+              <p className="text-lg  hover:bg-white hover:text-sec_dark transition-colors duration-300 py-2 rounded-lg px-1">
+                Teachers
+              </p>
+            </div>
+            <hr className="border-black" />{" "}
+          </>
+        ) : (
+          <>
+            <div className="cursor-pointer">
+              <p className="text-lg  hover:bg-white hover:text-sec_dark transition-colors duration-300 py-2 rounded-lg px-1">
+                Feedback
+              </p>
+            </div>
+            <hr className=" border-black" />
+          </>
+        )}
         <div className="mt-auto">
-          <button className="w-fit rounded-md bg-sec_dark p-2 font-semibold text-lg text-white hover:bg-white hover:text-sec_dark transition-colors duration-300">
+          <button onClick={()=>{Navigate("/")
+        localStorage.clear()}} className="w-fit rounded-md bg-sec_dark p-2 font-semibold text-lg text-white hover:bg-white hover:text-sec_dark transition-colors duration-300">
             Logout
           </button>
         </div>

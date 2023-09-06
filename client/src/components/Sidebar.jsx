@@ -43,7 +43,7 @@ const Sidebar = ({admincheck}) => {
         )}
         <div className="mt-auto">
           <button onClick={()=>{Navigate("/")
-        localStorage.clear()}} className="w-fit rounded-md bg-sec_dark p-2 font-semibold text-lg text-white hover:bg-white hover:text-sec_dark transition-colors duration-300">
+        localStorage.clear()} }className="w-fit rounded-md bg-sec_dark p-2 font-semibold text-lg text-white hover:bg-white hover:text-sec_dark transition-colors duration-300">
             Logout
           </button>
         </div>

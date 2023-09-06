@@ -42,7 +42,11 @@ useEffect(() => {
 
  
   return (
-    <div className="w-screen h-screen ">
+    <>
+      <h1 className="hidden sm:block md:block text-5xl text-center mt-96">
+        This app is not supported on mobile devices. Please use a desktop
+      </h1>
+    <div className="w-screen h-screen sm:hidden md:hidden">
       
       <Routes>
 
@@ -52,6 +56,7 @@ useEffect(() => {
         
       </Routes>
     </div>
+    </>
   );
 }
 

@@ -16,9 +16,9 @@ function App() {
     if (localStorage.getItem("user")) {
       const data = JSON.parse(localStorage.getItem("user"));
       if (data.email == "admin@gmail.com" && data.password == "admin123") {
-        setadmincheck(true);
+        setadmincheck(prev => true);
       } else {
-        setadmincheck(false);
+        setadmincheck(prev => false);
       }
     }
   }, []);

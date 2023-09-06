@@ -3,6 +3,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 const Sidebar = ({admincheck}) => {
   console.log(admincheck +" from login")
+  const data = JSON.parse(localStorage.getItem("user"));
 
   const Navigate = useNavigate()
   return (
@@ -21,7 +22,7 @@ const Sidebar = ({admincheck}) => {
         </div>
       </div>
       <div className="p-4 mt-2 flex flex-col h-[70%] gap-3 font-bold">
-        {admincheck ? (
+        {data.email == "admin@gmail.com"? (
           <>
             <div className=" cursor-pointer">
               <p className="text-lg  hover:bg-white hover:text-sec_dark transition-colors duration-300 py-2 rounded-lg px-1">

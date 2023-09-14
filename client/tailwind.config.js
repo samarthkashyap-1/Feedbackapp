@@ -4,10 +4,25 @@ export default withMT({
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      // colors: {
+      //   primary: "white",
+      //   secondary: "#f1debc",
+      //   sec_dark: "#dcb571",
+      // },
       colors: {
-        primary: "white",
-        secondary: "#f1debc",
-        sec_dark: "#dcb571",
+        primary: "#ffffff",
+        secondary: "#e5e5e5",
+        sec_dark: "#102542",
+        white: "#fff",
+        black: "#000",
+        gray: {
+          100: "#f7fafc",
+          // ...
+          900: "#1a202c",
+        },
+      },
+      fontFamily: {
+        primary: ["Montserrat", "sans-serif"],
       },
     },
     screens: {

@@ -27,9 +27,7 @@ function App() {
   }, []);
 
 const checkuser =()=>{
-  // if (data == null) {
-  //   redirect("/login")
-  // }
+  
     if (data?.email == "admin@gmail.com") {
      navigate("/admin");
     } else if (data?.email == "teacher@gmail.com") {
@@ -43,10 +41,10 @@ useEffect(() => {
  
   return (
     <>
-      <h1 className="hidden sm:block md:block text-5xl text-center mt-96">
+      <h1 className=" hidden sm:block md:block text-5xl text-center mt-96">
         This app is not supported on mobile devices. Please use a desktop
       </h1>
-    <div className="w-screen h-screen sm:hidden md:hidden">
+    <div className="font-primary w-screen h-screen sm:hidden md:hidden">
       
       <Routes>
 

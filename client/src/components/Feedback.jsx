@@ -1,43 +1,41 @@
-
-import {
-  Tabs,
-  TabsHeader,
-  TabsBody,
-  Tab,
-  TabPanel,
-} from "@material-tailwind/react";
+// import {
+//   Tabs,
+//   TabsHeader,
+//   TabsBody,
+//   Tab,
+//   TabPanel,
+// } from "@material-tailwind/react";
 import { Component } from "react";
 import Form from "./Form";
 import TableFeedback from "./TableFeedback";
-
+import MyTab from "./MyTab";
 
 function Feedback() {
-    
   const data = [
     {
       label: "Form",
       value: "form",
-      component: <Form />
+      component: <Form />,
     },
 
     {
       label: "Excel",
       value: "excel",
-      component: <TableFeedback />
-    }
+      component: <TableFeedback />,
+    },
   ];
 
   return (
     <div className="col-span-4 bg-secondary rounded-lg p-2">
-      <Tabs id="custom-animation" className="mb-2" value="form">
-        <TabsHeader className=" bg-secondary">
+      {/* <Tabs id="custom-animation" className="mb-2 bg-sec_dark rounded-lg" value="form">
+        <TabsHeader className=" bg-sec_dark rounded-lg">
           {data.map(({ label, value }) => (
-            <Tab className="font-bold" key={value} value={value}>
+            
+            <Tab  className="font-bold" key={value} value={value}>
               {label}
             </Tab>
           ))}
         </TabsHeader>
-        
 
         <TabsBody
           className="flex justify-center items-center"
@@ -53,10 +51,10 @@ function Feedback() {
             </TabPanel>
           ))}
         </TabsBody>
-      </Tabs>
+      </Tabs> */}
+      <MyTab />
     </div>
-
- );
+  );
 }
 
 export default Feedback;

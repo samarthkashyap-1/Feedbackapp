@@ -33,7 +33,7 @@ const Form = () => {
   return (
     <div className="flex flex-col items-center rounded-lg bg-secondary justify-center flex-grow-1 py-4 text-black">
       <form
-        className="grid grid-cols-2 gap-6 font-primary w-full p-10"
+        className="grid grid-cols-2 gap-6 font-primary  w-full p-10"
         action=""
       >
         <div className="flex flex-col gap-6">
@@ -121,13 +121,13 @@ const Form = () => {
             name=""
             id=""
             cols="30"
-            rows="9"
+            rows="12"
           ></textarea>
-          <button className="bg-sec_dark w-full rounded-md py-2 text-white font-semibold">
-            Submit
-          </button>
         </div>
       </form>
+        <button className="bg-sec_dark w-fit   rounded-md p-2 text-white font-semibold">
+          Submit
+        </button>
     </div>
   );
 };

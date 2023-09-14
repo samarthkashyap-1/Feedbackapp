@@ -3,10 +3,12 @@ import Login from "./pages/Login"
 import AdminDash from "./pages/AdminDash"
 import {Routes, Route , useLocation, useNavigate} from "react-router-dom"
 import { useEffect, useLayoutEffect,useState } from "react";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 
 
 function App() {
+   const [parent, enableAnimations] = useAutoAnimate();
   const [admincheck, setadmincheck] = useState();
   const location = useLocation();
 
@@ -41,10 +43,12 @@ useEffect(() => {
  
   return (
     <>
+    
+
       <h1 className=" hidden sm:block md:block text-5xl text-center mt-96">
         This app is not supported on mobile devices. Please use a desktop
       </h1>
-    <div className="font-primary w-screen h-screen sm:hidden md:hidden">
+    <div className="font-primary w-screen h-screen sm:hidden md:hidden" ref={parent}>
       
       <Routes>
 

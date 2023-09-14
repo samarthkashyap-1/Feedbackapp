@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@formkit/auto-animate": "^0.8.0",
     "@heroicons/react": "^2.0.18",
     "@material-tailwind/react": "^2.1.0",
     "prettier": "^3.0.2",

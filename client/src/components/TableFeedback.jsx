@@ -63,7 +63,7 @@ const TableFeedback = () => {
         <tbody>
           {TABLE_ROWS.map(({ name, job, date }, index) => {
             const isLast = index === TABLE_ROWS.length - 1;
-            const classes = "p-4 border border-blue-gray-50 text-clip";
+            const classes = "p-4 text-clip";
 
             return (
               <tr key={name}>

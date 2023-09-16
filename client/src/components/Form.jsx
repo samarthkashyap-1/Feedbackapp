@@ -125,7 +125,7 @@ const Form = () => {
           ></textarea>
         </div>
       </form>
-        <button className="bg-sec_dark w-fit   rounded-md p-2 text-white font-semibold">
+        <button className="bg-sec_dark w-fit rounded-md p-2 text-white font-semibold">
           Submit
         </button>
     </div>

@@ -10,6 +10,20 @@ import { AgGridReact } from "ag-grid-react"; // the AG Grid React Component
 
 import "ag-grid-community/styles/ag-grid.css"; // Core grid CSS, always needed
 import "ag-grid-community/styles/ag-theme-alpine.css"; // Optional theme CSS
+import { Button, button } from "@material-tailwind/react";
+
+const ActionButtons = () => {
+  return (
+    <div className="flex justify-center gap-4 items-center h-full">
+      <button className="bg-sec_dark w-fit rounded-md px-2 text-white font-semibold">
+        Edit
+      </button>
+      <button className="bg-sec_dark w-fit rounded-md px-2 text-white font-semibold">
+        Delete
+      </button>
+    </div>
+  );
+};
 
 const TableFeedback = () => {
   const gridRef = useRef(); // Optional - for accessing Grid's API
@@ -157,6 +171,11 @@ const TableFeedback = () => {
       width: 500,
       autoHeight: true,
     },
+    {
+      headerName: "Edit",
+      field: "edit",
+      cellRenderer: ActionButtons,
+    },
   ]);
 
   // DefaultColDef sets props common to all Columns
@@ -175,9 +194,23 @@ const TableFeedback = () => {
     gridRef.current.api.exportDataAsCsv();
   }, []);
 
-  const onBtnUpdate = useCallback(() => {
-    document.querySelector("#csvResult").value =
-      gridRef.current.api.getDataAsCsv();
+  const addRow = useCallback(() => {
+    gridRef.current.api.applyTransaction({
+      add: [
+        {
+          Student: "",
+          Date: "",
+          Month: "",
+          Weekday: "",
+          Subject: "",
+          Topic: "",
+          TestScore: "",
+          Feedback: "",
+        },
+      ],
+    });
+
+
   }, []);
 
   // Example of consuming Grid Event
@@ -192,6 +225,12 @@ const TableFeedback = () => {
         >
           Download CSV
         </button>
+        <button
+          className="bg-sec_dark mr-5 my-1.5 w-fit rounded-md p-2 text-white font-semibold"
+          onClick={addRow}
+        >
+          Add Row
+        </button>
       </div>
       <div
         className="ag-theme-alpine"
@@ -205,7 +244,7 @@ const TableFeedback = () => {
           animateRows={true}
           rowSelection="multiple"
           // onCellClicked={cellClickedListener}
-          // rowHeight={120}
+          rowHeight={120}
         />
       </div>
     </div>

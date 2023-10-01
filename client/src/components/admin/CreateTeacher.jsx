@@ -16,7 +16,7 @@ const CreateTeacher = () => {
   const onSubmit = (data) => {
     console.log("data :>> ", data);
   };
-  const [Isopen, setIsopen] = React.useState(true);
+  const [Isopen, setIsopen] = React.useState(false);
 
   const toggle = () => {
     setIsopen(!Isopen);

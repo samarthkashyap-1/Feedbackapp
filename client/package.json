@@ -21,6 +21,7 @@
     "react-awesome-reveal": "^4.2.5",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.4",
+    "react-pro-sidebar": "^1.1.0-alpha.1",
     "react-router-dom": "^6.15.0"
   },
   "devDependencies": {

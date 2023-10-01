@@ -53,7 +53,9 @@ useEffect(() => {
       <Routes>
 
         <Route path="/" element={<Login/>} />
-        <Route path="/teacher" element={<TeacherDashboard admincheck={admincheck} />} />
+        <Route path="/teacher" element={<TeacherDashboard admincheck={admincheck} />}>
+          
+        </Route>
         <Route path="/admin" element={<AdminDash admincheck={admincheck} />} />
         
       </Routes>

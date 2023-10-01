@@ -151,12 +151,23 @@ const TableFeedback = () => {
         "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad",
     },
   ]);
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  // const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
+  // const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
 
   // Each Column Definition results in one Column.
   const [columnDefs, setColumnDefs] = useState([
     // set columns def of student, date, month, weekday, subject, topic, test score, feeback
+    {
+      headerName: "",
+      field: "select",
+      checkboxSelection: true,
+      headerCheckboxSelection: true,
+      
+      width: 50,
+      pinned: "left",
+      editable: false,
+      headecheckboxSelectionrName: "Select",
+    },
     { headerName: "Student", field: "student" },
     { headerName: "Date", field: "date" },
     { headerName: "Month", field: "month" },
@@ -171,11 +182,6 @@ const TableFeedback = () => {
       width: 500,
       autoHeight: true,
     },
-    {
-      headerName: "Edit",
-      field: "edit",
-      cellRenderer: ActionButtons,
-    },
   ]);
 
   // DefaultColDef sets props common to all Columns
@@ -184,33 +190,50 @@ const TableFeedback = () => {
       width: 170,
       sortable: true,
       filter: true,
-      resizable: true,
+      // resizable: true,
       editable: true,
     }),
     []
   );
 
   const onBtnExport = useCallback(() => {
-    gridRef.current.api.exportDataAsCsv();
+    const params = {
+      fileName: "Feedback data.csv",
+
+      columnKeys: [
+        "student",
+        "date",
+        "month",
+        "weekday",
+        "subject",
+        "topic",
+        "testScore",
+        "feedback",
+      ],
+
+      sheetName: "Feedback Data",
+    };
+    gridRef.current.api.exportDataAsCsv(params);
   }, []);
 
   const addRow = useCallback(() => {
     gridRef.current.api.applyTransaction({
       add: [
         {
-          Student: "",
-          Date: "",
-          Month: "",
-          Weekday: "",
-          Subject: "",
-          Topic: "",
-          TestScore: "",
-          Feedback: "",
+          student: "Enter Name",
+          date: "Enter Date",
+          month: " Enter Month",
+          weekday: "  Enter Weekday",
+          subject: " Enter Subject",
+          topic: " Enter Topic",
+          testScore: " Enter Test Score",
+          feedback: " Enter Feedback",
         },
       ],
+      addIndex: 0,
     });
 
-
+    gridOptions.api.setPinnedTopRowData([inputRow]);
   }, []);
 
   // Example of consuming Grid Event
@@ -231,6 +254,15 @@ const TableFeedback = () => {
         >
           Add Row
         </button>
+        <button
+          className="bg-sec_dark mr-5 my-1.5 w-fit rounded-md p-2 text-white font-semibold"
+          onClick={() => {
+            const SelectedRow = gridRef.current.api.getSelectedRows();
+            gridRef.current.api.applyTransaction({ remove: SelectedRow });
+          }}
+        >
+          Delete
+        </button>
       </div>
       <div
         className="ag-theme-alpine"
@@ -242,8 +274,10 @@ const TableFeedback = () => {
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
           animateRows={true}
+          suppressRowClickSelection={true}
+          
+          stopEditingWhenCellsLoseFocus={true}
           rowSelection="multiple"
-          // onCellClicked={cellClickedListener}
           rowHeight={120}
         />
       </div>

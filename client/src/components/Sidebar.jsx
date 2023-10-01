@@ -1,66 +1,25 @@
-import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import React from 'react'
+import close from '../assets/close.svg'
 
-const Sidebar = ({ admincheck }) => {
-  console.log(admincheck + " from login");
-  const data = JSON.parse(localStorage.getItem("user"));
+const Sidebar = ( {toggle, handleclick} ) => {
 
-  const Navigate = useNavigate();
   return (
-    <div className="col-span-1 p-2 bg-secondary rounded-lg drop-shadow-md">
-      <div className=" bg-sec_dark text-white  rounded-lg p-4">
-        <div className=" flex p-2">
-          <img
-            className="flex w-1/4 h-1/3 rounded-full border-secondary border-4"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ09m0A12wo0-TOJylSMtL_4z_cg0ylhW2r_w&usqp=CAU"
-            alt=""
-          />
-        </div>
-        <div className="  px-2">
-          <p className="font-bold text-lg">Utkarsh Maurya</p>
-          <p className="text-xs font-medium">utkarshmaurya@123.com</p>
-        </div>
+    <div
+      className={`${
+        toggle ? "w-52" : "w-0"
+      } h-full overflow-hidden transition-all duration-300 absolute  bg-sec_dark text-white z-10 `}
+    >
+      <div className='flex p-4'>
+
+      <button className='ml-auto text-3xl' onClick={handleclick}><img src={close} alt="" /></button>
       </div>
-      <div className="p-4 mt-2 flex flex-col h-[70%] gap-3 font-bold">
-        {data.email == "admin@gmail.com" ? (
-          <>
-            <div className=" cursor-pointer">
-              <p className="text-lg  hover:bg-white hover:text-sec_dark transition-colors duration-300 py-2 rounded-lg px-1">
-                Teachers
-              </p>
-            </div>
-            <hr className="border-black" />{" "}
-            <div className=" cursor-pointer">
-              <p className="text-lg  hover:bg-white hover:text-sec_dark transition-colors duration-300 py-2 rounded-lg px-1">
-                Feedbacks
-              </p>
-            </div>
-            <hr className="border-black" />{" "}
-          </>
-        ) : (
-          <>
-            <div className="cursor-pointer">
-              <p className="text-lg  hover:bg-white hover:text-sec_dark transition-colors duration-300 py-2 rounded-lg px-1">
-                Feedback
-              </p>
-            </div>
-            <hr className=" border-black" />
-          </>
-        )}
-        <div className="mt-auto">
-          <button
-            onClick={() => {
-              Navigate("/");
-              localStorage.clear();
-            }}
-            className="w-fit rounded-md bg-sec_dark p-2 font-semibold text-lg text-white hover:bg-white hover:text-sec_dark transition-colors duration-300"
-          >
-            Logout
-          </button>
-        </div>
-      </div>
+      <ul className="w-full h-full flex flex-col gap-8 p-10 ">
+        <li>Home</li>
+        <li>Teacher</li>
+        <li>Feedback</li>
+      </ul>
     </div>
   );
-};
+}
 
-export default Sidebar;
+export default Sidebar

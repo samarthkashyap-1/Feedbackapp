@@ -8,7 +8,7 @@ const TeacherDashboard = ({admincheck}) => {
     <div className="h-screen flex flex-col">
       <Navbar />
       <div className="flex-1 grid grid-cols-5 m-3 gap-3">
-        <Sidebar admincheck={admincheck} />
+        <Sidebar />
         <Feedback />
       </div>
     </div>

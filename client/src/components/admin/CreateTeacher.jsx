@@ -195,7 +195,7 @@ const CreateTeacher = () => {
                 Student Name
               </label>
               <input
-                {...register("name", {
+                {...register("studentname", {
                   required: "Name is required.",
                 })}
                 placeholder="Enter Student name"

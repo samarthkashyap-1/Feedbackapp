@@ -229,11 +229,12 @@ const TeacherDetails = () => {
             className=" flex flex-col gap-4"
           >
             <div className="flex flex-col">
-              <label className="font-semibold" htmlFor="name">
+              <label className="font-semibold" htmlFor="studentname">
                 Student Name
               </label>
               <input
-                {...register("name", {
+                id="studentname"
+                {...register("studentname", {
                   required: "Name is required.",
                 })}
                 placeholder="Enter Student name"
@@ -243,10 +244,11 @@ const TeacherDetails = () => {
               />
             </div>
             <div className="flex flex-col">
-              <label className="font-semibold" htmlFor="email">
+              <label className="font-semibold" htmlFor="studentemail">
                 Student Email
               </label>
               <input
+              id="studentemail"
                 placeholder="Enter Student email"
                 required
                 type="email"

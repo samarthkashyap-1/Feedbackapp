@@ -1,67 +1,45 @@
-import TeacherDashboard from "./pages/TeacherDashboard"
-import Login from "./pages/Login"
-import AdminDash from "./pages/AdminDash"
-import {Routes, Route , useLocation, useNavigate} from "react-router-dom"
-import { useEffect, useLayoutEffect,useState } from "react";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
-
-
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/admin/Home";
+import Login from "./components/Login";
+import AdminDashboard from "./components/admin/AdminDashboard";
+import Teachers from "./components/admin/Teachers";
+import Students from "./components/admin/Students";
+import Feedback from "./components/admin/Feedback";
+import TeachersDetails from "./components/admin/TeacherDetails";
+import AddTeacher from "./components/admin/AddTeacher";
+import AddStudent from "./components/admin/AddStudent";
+import StudentDetails from "./components/admin/StudentDetails";
+import TeacherDashboard from "./components/teachers/TeacherDashboard";
+import TeacherHome from "./components/teachers/TeacherHome";
+import TeacherFeedback from "./components/teachers/TeacherFeedback";
 
 function App() {
-   const [parent, enableAnimations] = useAutoAnimate();
-  const [admincheck, setadmincheck] = useState();
-  const location = useLocation();
+	return (
+		<div className="w-screen h-full font-primary text-gray-600">
+			<Routes>
+				<Route path="/" element={<Login />} />
+				<Route path="/admin" element={<AdminDashboard />}>
+					<Route index element={<Home />} />
+					<Route path="teachers" element={<Teachers />} />
+					<Route path="teachers/:id" element={<TeachersDetails />} />
+					<Route path="students" element={<Students />} />
+					<Route path="students/:id" element={<StudentDetails />} />
+					<Route path="feedbacks" element={<Feedback />} />
+					<Route path="addTeacher" element={<AddTeacher />} />
+					<Route path="addStudent" element={<AddStudent />} />
+				</Route>
+				<Route path="/teacher" element={<TeacherDashboard />}>
+					{/*  />
+					<Route path="teachers" element={<Teachers />} />
 
-  const navigate = useNavigate()
-  
-  const data = JSON.parse(localStorage.getItem("user"));
-  localStorage.getItem("user") ? console.log("user") : console.log("no user");
-
-  useLayoutEffect(() => {
-     
-    if (localStorage.getItem("user")) {
-      if (data.email == "admin@gmail.com" && data.password == "admin123") {
-        setadmincheck(prev => true);
-      } else {
-        setadmincheck(prev => false);
-      }
-    }
-  }, []);
-
-const checkuser =()=>{
-  
-    if (data?.email == "admin@gmail.com") {
-     navigate("/admin");
-    } else if (data?.email == "teacher@gmail.com") {
-      navigate("/teacher");
-    }
-}
-useEffect(() => {
-  checkuser()
-}, [location.pathname]);
-
- 
-  return (
-    <>
-    
-
-      <h1 className=" hidden sm:block md:block text-5xl text-center mt-96">
-        This app is not supported on mobile devices. Please use a desktop
-      </h1>
-    <div className="font-primary w-screen h-screen sm:hidden md:hidden" ref={parent}>
-      
-      <Routes>
-
-        <Route path="/" element={<Login/>} />
-        <Route path="/teacher" element={<TeacherDashboard admincheck={admincheck} />}>
-          
-        </Route>
-        <Route path="/admin" element={<AdminDash admincheck={admincheck} />} />
-        
-      </Routes>
-    </div>
-    </>
-  );
+					<Route path="students" element={<Students />} />
+					<Route path="feedbacks" element={<Feedback />} /> */}
+					<Route index element={<TeacherHome />} />
+					<Route path="feedback" element={<TeacherFeedback />} />
+				</Route>
+			</Routes>
+		</div>
+	);
 }
 
-export default App
+export default App;
